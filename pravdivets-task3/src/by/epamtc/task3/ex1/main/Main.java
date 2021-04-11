@@ -7,8 +7,7 @@ import by.epamtc.task3.ex1.service.ArrayNumberActions;
 public class Main {
 
 	public static void main(String[] args) {
-//		Array array1 = new Array(new int[]{1, 2, 3, 4, 853, -256, 666, 128, 42});
-//
+//		Array array1 = new Array(new int[]{1, 2, 3, 4, 42, 85, 942});
 //		
 //		
 //		System.out.println(array1);
@@ -24,11 +23,13 @@ public class Main {
 		
 		//System.out.println(array1.defineMin());
 		
-		ArrayNumberActions actions = new ArrayNumberActions();
+		//ArrayNumberActions actions = new ArrayNumberActions();
 		
-		Array array2 = actions.fillRandomNumbers(15, 5);
+		Array array2 = new Array(10);
+		System.out.println(array2);		
+		ArrayNumberActions.fillRandomNumbers(array2, 200);
 		System.out.println(array2);
-		
+//		
 		
 //		int[] out = actions.defineThreeDigtNoIdenticalInArray(array1);
 //		

@@ -1,38 +1,34 @@
 package by.epamtc.task3.ex1.entity;
 
 import java.io.File;
-import java.util.Arrays;
+import java.io.Serializable;
+
+
 
 public class Array {
 
 	private int[] array;
 	
-	public Array() {
-		
-	}
-	
 	public Array (int[] array) {
 		if (array == null) {
-			// throws NullArrayException - пока без реализации
+			// throws NullArrayException("The array equals to null") - пока без реализации
 		}
 		this.array = array;
 	}
 	
 	public Array (int length) {
+		if(length < 0) {
+			// throw new IllegalArrayLengthException("The array length can't be less than 0") - пока без реализации
+		}
+		
 		array = new int [length];
 	}
 
 	public int[] getArray() {
-		if (array == null) {
-		// throws NullArrayException - пока без реализации
-		}
 		return array;
 	}
 
 	public void setArray(int[] array) {
-		if (array == null) {
-			// throws NullArrayException - пока без реализации
-		}
 		this.array = array;
 	}
 
@@ -90,8 +86,22 @@ public class Array {
 	}
 
 	
+	public boolean isSorted() {
+		boolean result = true;
+		for(int i = 0; i < array.length - 1; i++) {
+			if(array[i] > array[i + 1]) {
+				result = false;
+			}
+		}
+		return result;
+	}
+	
+	
 	public int searchBinary(int item) {
-		this.sort1(); // this для наглядности
+		if(!isSorted()) {
+			// throws NotSortedArrayException("The array is not sorted. Binary search impossible") - пока без реализации
+		}
+		
 		int idx = -1; // это значение индекса и будет выдано, если искомое число не будет найдено
 		int low = 0;
 		int high = array.length;
@@ -113,7 +123,6 @@ public class Array {
 	
 	public int defineMax() {
 		int max = array[0];
-		
 		for(int i = 1; i < array.length; i++) {
 			if(array[i] > max) {
 				max = array[i];
@@ -125,7 +134,6 @@ public class Array {
 	
 	public int defineMin() {
 		int min = array[0];
-		
 		for(int i = 1; i < array.length; i++) {
 			if(array[i] < min) {
 				min = array[i];
@@ -135,21 +143,17 @@ public class Array {
 	}
 
 	
-	public int[] fillFromConsole(Array arrayObject) {
-		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
-		}
-		int[] array = arrayObject.getArray();
+	public int[] fillFromConsole() {
+		
 		
 		return null;
 	}
 
+
 	
-	public int[] fillFromFile(Array arrayObject, File file) {
-		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
-		}
-		int[] array = arrayObject.getArray();
+	
+	public int[] fillFromFile(File file) {
+		
 		
 		
 		return null;
