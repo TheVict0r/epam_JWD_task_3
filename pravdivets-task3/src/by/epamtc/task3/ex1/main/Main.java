@@ -52,9 +52,6 @@ public class Main {
 		
 		//==========7. ЗАПОЛНЕНИЕ МАССИВА =============
 		
-		
-		
-		
 		//7.3 случайные числа
 		Array array731 = new Array(10);
 		Array array732 = new Array(10);
@@ -63,6 +60,10 @@ public class Main {
 		System.out.println("fill random without bound: " + array731);
 		System.out.println("fill random with    bound: " + array732);
 		
+		//7.2 с консоли
+		Array array72 = new Array(5);
+		array72.fillFromConsole();
+		System.out.println("Array from console:  " + array72);
 		
 
 		
