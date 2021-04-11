@@ -36,17 +36,35 @@ public class Main {
 		Array array4 = new Array(new int[]{2, 3, 5, 7, 11, 13, 17, 179, 181, 191, 193, 197, 42, 33, 99});
 		int[] simple = ArrayNumberActions.defineSimpleNum(array4);
 		System.out.print("simple numbers:  ");
-		for(int i : simple) {
-			System.out.print(i + " ");
-		}
-		System.out.println();
+		printArray(simple);
+		
+		//==========5. ФИБОНАЧЧИ ====================
+		Array arrayFibo = new Array(new int[] {1, 2, 3, 4, 5, 8, 13, 14, 15, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765});
+		int[] fibFib = ArrayNumberActions.defineFibonacci(arrayFibo);
+		System.out.print("Fibonacci numbers:   ");
+		printArray(fibFib);
+		
+		//==========6. ТРЁХЗНАЧНЫЕ ЧИСЛА БЕЗ ОДИНАКОВЫХ ЦИФР ============
+		Array array6 = new Array(new int[]{2, 3, 5, 7, 122, 123, 199, 595, 596, 555, 808, 703});
+		int[] threeDigit = ArrayNumberActions.defineThreeDigtNoIdentical(array6);
+		System.out.print("three unique digit numbers:   ");
+		printArray(threeDigit);
+		
+		//==========7. ЗАПОЛНЕНИЕ МАССИВА =============
 		
 		
-//		int[] out = actions.defineThreeDigtNoIdenticalInArray(array1);
-//		
-//		for(int i : out) {
-//			System.out.print(i + " ");
-//		}
+		
+		
+		//7.3 случайные числа
+		Array array731 = new Array(10);
+		Array array732 = new Array(10);
+		ArrayNumberActions.fillWithRandom(array731);
+		ArrayNumberActions.fillWithRandom(array732, 100);
+		System.out.println("fill random without bound: " + array731);
+		System.out.println("fill random with    bound: " + array732);
+		
+		
+
 		
 //		System.out.println(actions.isThreeDigtNoIdentical(855));
 //		
@@ -62,16 +80,19 @@ public class Main {
 //		}
 //		System.out.println(array3);
 //		
+
 		
-		//==========ФИБОНАЧЧИ
-		Array arrayFibo = new Array(new int[] {1, 2, 3, 4, 5, 8, 13, 14, 15, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765});
-		int[] fibFib = ArrayNumberActions.defineFibonacci(arrayFibo);
-		System.out.print("Fibonacci numbers:   ");
-		for(int i : fibFib) {
+		
+		
+	}
+	
+	public static void printArray(int[] array) {
+		for(int i : array) {
 			System.out.print(i + " ");
 		}
 		System.out.println();
-		//===========================
 	}
+	
+	
 
 }
