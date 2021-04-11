@@ -38,7 +38,7 @@ public class Main {
 		System.out.print("simple numbers:  ");
 		printArray(simple);
 		
-		//==========5. ФИБОНАЧЧИ ====================
+		//==========5. ВСЕ ЧИСЛА ФИБОНАЧЧИ ИЗ МАССИВА ====================
 		Array arrayFibo = new Array(new int[] {1, 2, 3, 4, 5, 8, 13, 14, 15, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765});
 		int[] fibFib = ArrayNumberActions.defineFibonacci(arrayFibo);
 		System.out.print("Fibonacci numbers:   ");
