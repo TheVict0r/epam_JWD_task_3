@@ -92,7 +92,7 @@ public class Array {
 	
 	public int searchBinary(int item) {
 		this.sort1(); // this для наглядности
-		int idx = -1;
+		int idx = -1; // это значение индекса и будет выдано, если искомое число не будет найдено
 		int low = 0;
 		int high = array.length;
 		
@@ -155,20 +155,6 @@ public class Array {
 		return null;
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	@Override
