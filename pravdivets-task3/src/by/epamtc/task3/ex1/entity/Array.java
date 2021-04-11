@@ -73,14 +73,41 @@ public class Array {
 	}
 
 	
-	public void sort3() {
-		
+	public void sort3() { // Shell sort
+		int gap = array.length / 2;
+		while(gap >= 1) {
+			for(int i = 0; i < array.length; i++) {
+				for (int j = i - gap; j >= 0; j -= gap) {
+					if (array[j] > array[j + gap]) {
+						int tmp = array[j];
+						array[j] = array[j + gap];
+						array[j + gap] = tmp;
+				}
+			}
+		}
+		gap /= 2;
+		}	
 	}
 
 	
 	public int searchBinary(int item) {
-				
-		return 0;
+		this.sort1(); // this для наглядности
+		int idx = -1;
+		int low = 0;
+		int high = array.length;
+		
+		while(low <= high) {
+			int mid = (low + high) / 2;
+			if (array[mid] < item) {
+				low = mid + 1;
+			} else if (array[mid] > item) {
+				high = mid - 1;
+			} else if (array[mid] == item) {
+				idx = mid;
+				break;
+			}
+		}
+		return idx;
 	}
 
 	
