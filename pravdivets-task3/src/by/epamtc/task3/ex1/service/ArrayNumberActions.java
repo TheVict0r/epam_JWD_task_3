@@ -50,14 +50,31 @@ public class ArrayNumberActions {
 		if (arrayObject == null) {
 			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
 		}
-		int[] array = arrayObject.getArray();
 
+		int[] array = arrayObject.getArray();
+		int[] tmp = new int[array.length];
+		int count = 0;
+		for(int i = 0; i < array.length; i++) {
+			if(isFibonacci(array[i])) {
+				tmp[count] = array[i];
+				count++;
+			}
+		}
 		
 		
-		
-		return null;
+		return tmp;
 	}
 
+	
+	public static boolean isFibonacci (int num) {
+		double first = Math.sqrt(5 * num * num + 4);
+		double second = Math.sqrt(5 * num * num - 4);
+		boolean result = false;
+		result = (first % 1 == 0) || (second % 1 == 0);
+		return result;
+	}
+	
+	
 	public static int[] defineThreeDigtNoIdentical(Array arrayObject) {
 		if (arrayObject == null) {
 			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
