@@ -8,28 +8,26 @@ public class ArrayNumberActions {
 
 	public static int[] defineSimpleNum(Array arrayObject) {
 		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
+			// throw new NullArrayObjectException(The Array object equals to null) - пока
+			// без реализации
 		}
 		int[] array = arrayObject.getArray();
 		int[] tmp = new int[array.length];
 		int count = 0;
 
 		for (int i = 0; i < array.length; i++) {
-			if (isSimpleNum(array[i])) {
+			if (isSimple(array[i])) {
 				tmp[count] = array[i];
 				count++;
 			}
 		}
 
-		int[] result = new int[count];
-		for (int i = 0; i < result.length; i++) {
-			result[i] = tmp[i];
-		}
-
+		int[] result = cutArray(tmp, count);
 		return result;
 	}
 
-	public static boolean isSimpleNum(int num) {
+	
+	public static boolean isSimple(int num) {
 		boolean result = true;
 		if (num < 2) {
 			result = false;
@@ -61,8 +59,8 @@ public class ArrayNumberActions {
 			}
 		}
 		
-		
-		return tmp;
+		int[] result = cutArray(tmp, count);
+		return result;
 	}
 
 	
@@ -89,11 +87,7 @@ public class ArrayNumberActions {
 				count++;
 			}
 		}
-		int[] result = new int[count];
-		for (int i = 0; i < result.length; i++) {
-			result[i] = tmp[i];
-		}
-
+		int[] result = cutArray(tmp, count);
 		return result;
 
 	}
@@ -116,7 +110,8 @@ public class ArrayNumberActions {
 		return result;
 	}
 
-	public static void fillRandomNumbers(Array arrayObject, int bound) {
+	
+	public static void fillWithRandom(Array arrayObject) {
 		if (arrayObject == null) {
 			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
 		}
@@ -125,9 +120,37 @@ public class ArrayNumberActions {
 		Random random = new Random();
 
 		for (int i = 0; i < array.length; i++) {
-			array[i] = random.nextInt(bound);
-			
+			array[i] = random.nextInt();
 		}
 		
 	}
+
+	//перегрузил предыдущий метод с возможностью ограничения диапазона случайных чисел
+	public static void fillWithRandom(Array arrayObject, int bound) {
+		if (arrayObject == null) {
+			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
+		}
+		
+		int[] array = arrayObject.getArray();
+		Random random = new Random();
+		
+		for (int i = 0; i < array.length; i++) {
+			array[i] = random.nextInt(bound);
+		}
+		
+	}
+	
+	
+	public static int[] cutArray(int[] longArray, int shortArrayLength ) {
+		int[] shortArray = new int[shortArrayLength];
+		
+		for(int i = 0; i < shortArray.length; i++) {
+			shortArray[i] = longArray[i];
+		}
+		return shortArray;
+	}
+	
+
+	
+	
 }
