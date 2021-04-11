@@ -7,7 +7,7 @@ public class ArrayNumberActions {
 	
 	public int[] defineSimpleNumbersInArray(Array arrayObject) {
 		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
+			// throws NullArrayObjectException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		int[] array = arrayObject.getArray();
 		int[] simpleNumTmp = new int[array.length];
@@ -49,7 +49,7 @@ public class ArrayNumberActions {
 	
 	public int[] defineFibonacci(Array arrayObject) {
 		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
+			// throws NullArrayObjectException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		int[] array = arrayObject.getArray();
 		
@@ -60,7 +60,7 @@ public class ArrayNumberActions {
 	
 	public int[] defineThreeDigtNoIdenticalInArray(Array arrayObject) {
 		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
+			// throws NullArrayObjectException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		int[] array = arrayObject.getArray();
 		int[] noIdenticalTmp = new int[array.length];
@@ -106,7 +106,7 @@ public class ArrayNumberActions {
 	
 	public static int[] fillRandomNumbers(Array arrayObject) {
 		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
+			// throws NullArrayObjectException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		int [] array = arrayObject.getArray();
 		

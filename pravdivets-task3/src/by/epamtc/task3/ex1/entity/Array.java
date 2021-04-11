@@ -13,7 +13,7 @@ public class Array {
 	
 	public Array (int[] array) {
 		if (array == null) {
-			// throws NullArrayException - пока без реализации
+			// throws NullArrayException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		this.array = array;
 	}
@@ -24,14 +24,14 @@ public class Array {
 
 	public int[] getArray() {
 		if (array == null) {
-		// throws NullArrayException - пока без реализации
+		// throws NullArrayException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		return array;
 	}
 
 	public void setArray(int[] array) {
 		if (array == null) {
-			// throws NullArrayException - пока без реализации
+			// throws NullArrayException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		this.array = array;
 	}
@@ -110,7 +110,7 @@ public class Array {
 	
 	public int[] fillFromConsole(Array arrayObject) {
 		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
+			// throws NullArrayObjectException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		int[] array = arrayObject.getArray();
 		
@@ -120,7 +120,7 @@ public class Array {
 	
 	public int[] fillFromFile(Array arrayObject, File file) {
 		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
+			// throws NullArrayObjectException - РїРѕРєР° Р±РµР· СЂРµР°Р»РёР·Р°С†РёРё
 		}
 		int[] array = arrayObject.getArray();
 		
