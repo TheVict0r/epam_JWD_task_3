@@ -36,6 +36,57 @@ public class Array {
 		this.array = array;
 	}
 
+	@Override
+	public int hashCode() {
+		if (array == null) {
+			return 0;
+		}
+
+		int result = 1;
+		for (int element : array) {
+			result = 42 * result + element;
+		}
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (this.getClass() != obj.getClass())
+			return false;
+		Array other = (Array) obj;
+		int[] otherInnerArray = other.getArray();
+		if (array.length != otherInnerArray.length)
+			return false;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i] != otherInnerArray[i])
+				return false;
+		}
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		if (array.length == 0)
+			return "[]";
+		StringBuilder b = new StringBuilder();
+		b.append(getClass().getSimpleName());
+		b.append(" [");
+		for (int i = 0; i < array.length; i++) {
+			b.append(array[i]);
+			b.append(", ");
+		}
+		b.deleteCharAt(b.lastIndexOf(", "));
+		b.append(']');
+
+		return b.toString();
+	}
+
+	// common array methods
+
 	public void sort1() { // bubble sort
 		for (int i = 0; i < array.length - 1; i++) {
 			boolean noSwaps = true;
@@ -86,16 +137,6 @@ public class Array {
 		}
 	}
 
-	public boolean isSorted() {
-		boolean result = true;
-		for (int i = 0; i < array.length - 1; i++) {
-			if (array[i] > array[i + 1]) {
-				result = false;
-			}
-		}
-		return result;
-	}
-
 	public int searchBinary(int item) {
 		if (!isSorted()) {
 			// throws NotSortedArrayException("The array is not sorted. Binary search
@@ -120,6 +161,16 @@ public class Array {
 		return idx;
 	}
 
+	public boolean isSorted() {
+		boolean result = true;
+		for (int i = 0; i < array.length - 1; i++) {
+			if (array[i] > array[i + 1]) {
+				result = false;
+			}
+		}
+		return result;
+	}
+
 	public int defineMax() {
 		int max = array[0];
 		for (int i = 1; i < array.length; i++) {
@@ -141,10 +192,10 @@ public class Array {
 	}
 
 	public void fillFromConsole() {
-		for(int i = 0; i < array.length; i++) {
+		for (int i = 0; i < array.length; i++) {
 			array[i] = DataScanner.enterIntFromConsole();
 		}
-		
+
 	}
 
 	public void fillFromFile(String fileName) throws IOException {
@@ -152,81 +203,12 @@ public class Array {
 		FileInputStream fileInputStream = new FileInputStream(fileName);
 
 		Scanner scanner = new Scanner(fileInputStream);
-		
-			while (scanner.hasNext()) {
-				int i = scanner.nextInt();
-				System.out.print(i + " ");
-			}
-			fileInputStream.close();
+
+		while (scanner.hasNext()) {
+			int i = scanner.nextInt();
+			System.out.print(i + " ");
 		}
-		
-
-		
-//		
-//		@SuppressWarnings("resource")
-//		Scanner scanner = new Scanner(fileInputStream);
-//		while (scanner.hasNext()) {
-//			for (int i = 0; i < array.length; i++) {
-//				while (!scanner.hasNextInt()) {
-//					scanner.next();
-//				}
-//				array[i] = scanner.nextInt();
-//			}
-//		}
-//		fileInputStream.close();
-
-	
-	
-	
-	
-
-	@Override
-	public int hashCode() {
-		if (array == null) {
-			return 0;
-		}
-
-		int result = 1;
-		for (int element : array) {
-			result = 42 * result + element;
-		}
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (this.getClass() != obj.getClass())
-			return false;
-		Array other = (Array) obj;
-		int[] otherInnerArray = other.getArray();
-		if (array.length != otherInnerArray.length)
-			return false;
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != otherInnerArray[i])
-				return false;
-		}
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		if (array.length == 0)
-			return "[]";
-		StringBuilder b = new StringBuilder();
-		b.append(getClass().getSimpleName());
-		b.append(" [");
-		for (int i = 0; i < array.length; i++) {
-			b.append(array[i]);
-			b.append(", ");
-		}
-		b.deleteCharAt(b.lastIndexOf(", "));
-		b.append(']');
-
-		return b.toString();
+		fileInputStream.close();
 	}
 
 }
