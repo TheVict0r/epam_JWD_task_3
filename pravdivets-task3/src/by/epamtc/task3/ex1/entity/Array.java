@@ -159,12 +159,20 @@ public class Array {
 	
 	@Override
 	public int hashCode() {
-		final int prime = 31;
+		if (array == null) {
+			return 0;
+		}
+		
 		int result = 1;
-		result = prime * result + Arrays.hashCode(array);
-		return result;
+        for (int element : array) {
+            result = 42 * result + element;
+        }
+        return result;
 	}
 
+	
+	
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

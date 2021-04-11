@@ -1,5 +1,7 @@
 package by.epamtc.task3.ex1.service;
 
+import java.util.Random;
+
 import by.epamtc.task3.ex1.entity.Array;
 
 public class ArrayNumberActions {
@@ -20,12 +22,12 @@ public class ArrayNumberActions {
 				}
 		}
 		
-		int[] simpleNumFin = new int[count];
-		for(int i = 0; i < simpleNumFin.length; i++) {
-			simpleNumFin[i] = simpleNumTmp[i];
+		int[] simpleNumFinal = new int[count];
+		for(int i = 0; i < simpleNumFinal.length; i++) {
+			simpleNumFinal[i] = simpleNumTmp[i];
 		}
 		
-		return simpleNumFin;
+		return simpleNumFinal;
 	}
 
 	public boolean isSimpleNumber(int num) {
@@ -73,12 +75,12 @@ public class ArrayNumberActions {
 				}
 		}
 		
-		int[] noIdenticalFin = new int[count];
-		for(int i = 0; i < noIdenticalFin.length; i++) {
-			noIdenticalFin[i] = noIdenticalTmp[i];
+		int[] noIdenticalFinal = new int[count];
+		for(int i = 0; i < noIdenticalFinal.length; i++) {
+			noIdenticalFinal[i] = noIdenticalTmp[i];
 		}
 		
-		return noIdenticalFin;
+		return noIdenticalFinal;
 		
 	}
 
@@ -104,14 +106,19 @@ public class ArrayNumberActions {
 	
 	
 	
-	public static int[] fillRandomNumbers(Array arrayObject) {
-		if (arrayObject == null) {
-			// throws NullArrayObjectException - пока без реализации
+	public Array fillRandomNumbers(int arrLength, int bound) { 
+		Array arrayObject = new Array(arrLength);
+		int[] array = arrayObject.getArray();
+		Random random = new Random();
+		
+		for(int i = 0; i < array.length; i++) {
+			int sign = random.nextInt(2);
+			if (sign == 1) {
+				array[i] = random.nextInt(bound);
+			} else {
+				array[i] = -1 * random.nextInt(bound);
+			}
 		}
-		int [] array = arrayObject.getArray();
-		
-		
-		return null;
+		return arrayObject;
 	}
-	
 }
