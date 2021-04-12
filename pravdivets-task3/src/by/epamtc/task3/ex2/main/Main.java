@@ -20,9 +20,7 @@ public class Main {
 		Print.print(wideArr);
 		System.out.println("=====================================");
 
-		int[][] shortArr = JaggedArrayActions.cutFirstColumn(wideArr);
-		Print.print(shortArr);
-		System.out.println("=====================================");
+		Print.print(JaggedArrayActions.defineRowSum(jagArr));
 		
 		
 	}
