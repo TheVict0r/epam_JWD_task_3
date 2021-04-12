@@ -19,11 +19,9 @@ public class Array {
 
 	public Array(int length) {
 		if (length < 0) {
-			// throw new IllegalArrayLengthException("The array length can't be less than
-			// 0")
+			// throw new IllegalArrayLengthException("The array length can't be less than 0")
 			// пока без реализации
 		}
-
 		array = new int[length];
 	}
 
@@ -196,9 +194,8 @@ public class Array {
 
 	}
 
-	
+	//предполагается, что файл содержит числа, разделенные пробелом
 	public static Array fillFromFile(String fileName) throws IOException {
-		//предполагается, что файл содержит числа, разделенные пробелом
 		if(fileName == null) {
 			//throw new NoFileNameException("No file name")
 		}
@@ -206,17 +203,18 @@ public class Array {
 		File file = new File(fileName);
 
 		StringBuilder strTemp = new StringBuilder();
-		try (FileInputStream fileInputStream = new FileInputStream(file)) {
+		FileInputStream fileInputStream = new FileInputStream(file);
+		try {
 			int a;
 			while ((a = fileInputStream.read()) != -1) {
 				strTemp.append((char) a);
 			}
 		} catch (IOException ex) {
 			System.out.println(ex.getMessage());
+		} finally {
+			fileInputStream.close();
 		}
-
-		System.out.println(strTemp);
-
+		
 		String strTemp2 = strTemp.toString();
 
 		String[] strArr = strTemp2.split(" ");
