@@ -25,7 +25,7 @@ public class JaggedArrayActions {
 		for (int i = 0; i < widerArr.length; i++) {
 			shortArr[i] = new int[widerArr[i].length - 1];
 		}
-		//копируем исходные данные начиная со второго столбца
+		//копируем исходные данные начиная со второго столбца (т.е. удаляем его)
 		for(int i = 0; i < shortArr.length; i++) {
 			for(int j = 0; j < shortArr[i].length; j++) {
 				shortArr[i][j] = widerArr[i][j+1];
