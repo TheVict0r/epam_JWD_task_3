@@ -2,22 +2,49 @@ package by.epamtc.task3.ex2.services;
 
 public class JaggedArrayActions {
 
-	public static int[][] sortIncreasingRowsSum(int[][] jagArr){
+	/*
+	 * сортировка в порядке возрастания / убывания сумм элементов строк матрицы
+	 */
+	public static int[][] sortRowsSum(int[][] jagArr, boolean reverse) {
 		int[][] wideSummed = defineRowSum(jagArr);
 		int[] firstCol = exportFirstColumn(wideSummed);
 		int[] sortedFirstCol = bubbleSort(firstCol);
+			if (reverse) {
+				sortedFirstCol = reverse(sortedFirstCol);
+			}
+		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortedFirstCol);
+		int[][] result = deleteFirstColumn(wideSummedSoreted);
+
+		return result;
+	}
+	
+	/*
+	 * сортировка в порядке возрастания / убывания сумм элементов строк матрицы
+	 */
+	public static int[][] sortMaxElement(int[][] jagArr, boolean reverse) {
+		int[][] wideSummed = defineMax(jagArr);
+		int[] firstCol = exportFirstColumn(wideSummed);
+		int[] sortedFirstCol = bubbleSort(firstCol);
+		if (reverse) {
+			sortedFirstCol = reverse(sortedFirstCol);
+		}
 		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortedFirstCol);
 		int[][] result = deleteFirstColumn(wideSummedSoreted);
 		
 		return result;
 	}
 	
-	public static int[][] sortDecreasingRowsSum(int[][] jagArr){
-		int[][] wideSummed = defineRowSum(jagArr);
+	/*
+	 * сортировка в порядке возрастания / убывания сумм элементов строк матрицы
+	 */
+	public static int[][] sortMinElement(int[][] jagArr, boolean reverse) {
+		int[][] wideSummed = defineMin(jagArr);
 		int[] firstCol = exportFirstColumn(wideSummed);
 		int[] sortedFirstCol = bubbleSort(firstCol);
-		int[] sortDecrFirstCol = reverse(sortedFirstCol);
-		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortDecrFirstCol);
+		if (reverse) {
+			sortedFirstCol = reverse(sortedFirstCol);
+		}
+		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortedFirstCol);
 		int[][] result = deleteFirstColumn(wideSummedSoreted);
 		
 		return result;
