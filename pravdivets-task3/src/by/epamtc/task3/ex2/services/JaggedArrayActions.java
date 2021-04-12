@@ -9,7 +9,7 @@ public class JaggedArrayActions {
 		}
 		int[][] withSum = defineRowSum(jagArr);
 		int[][] sorted = sortByFirstColumn(withSum, reverse);
-		int[][] result = deleteFirstColumn(sorted); //специально не стал добавлять в предыдущий метод - single responsibility
+		int[][] result = deleteFirstColumn(sorted); //специально не стал объединять с предыдущим методом - single responsibility
 		
 		return result;
 	}
@@ -108,30 +108,30 @@ public class JaggedArrayActions {
 	
 	
 	
-	public static int[][] sortByFirstColumn(int[][] wideArr, boolean reverse) {
-		if (wideArr == null) {
+	public static int[][] sortByFirstColumn(int[][] unsorted, boolean reverse) {
+		if (unsorted == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[] firstCol = exportFirstColumn(wideArr);
+		int[] firstCol = exportFirstColumn(unsorted);
 		int[] sortedFirstCol = bubbleSort(firstCol);
 				if (reverse) {
 					sortedFirstCol = reverse(sortedFirstCol);
 				}
 
-		int[][] sortedArr = makeEmptyCopy(wideArr, 0);
+		int[][] sorted = makeEmptyCopy(unsorted, 0);
 
-		for (int i = 0; i < sortedArr.length; i++) { // перебираем финальный массив - туда сортируем
-			for (int j = 0; j < sortedFirstCol.length; j++) { // перебираем отсортированный первый столбец 
-				for (int k = 0; k < wideArr.length; k++) {// перебираем исходный неотсортированный массив 
-					if (wideArr[k][0] == sortedFirstCol[j]) {
-						sortedArr[j] = wideArr[k];
+		for (int i = 0; i < sorted.length; i++) { 
+			for (int j = 0; j < sortedFirstCol.length; j++) {  
+				for (int k = 0; k < unsorted.length; k++) {
+					if (unsorted[k][0] == sortedFirstCol[j]) {
+						sorted[j] = unsorted[k];
 					}
 				}
 			}
 		}
 
-		return sortedArr;
+		return sorted;
 	}
 
 
