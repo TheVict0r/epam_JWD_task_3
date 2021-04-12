@@ -5,7 +5,7 @@ public class JaggedArrayActions {
 	/*
 	 * сортировка в порядке возрастания / убывания сумм элементов строк матрицы
 	 */
-	public static int[][] sortRowsSum(int[][] jagArr, boolean reverse) {
+	public static int[][] sortRowSum(int[][] jagArr, boolean reverse) {
 		if (jagArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
@@ -52,13 +52,13 @@ public class JaggedArrayActions {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[] firstCol = exportFirstColumn(widerArr); //извлекаем первый столбец
-		int[] sortedFirstCol = bubbleSort(firstCol);  //сортируем первый столбец
-		if (reverse) {
-			sortedFirstCol = reverse(sortedFirstCol);
-		}
-		int[][] wideSoreted = sortWithGuideLine(widerArr, sortedFirstCol);//сортируем двумерный массив в соответствии с первым столбцом
-		int[][] result = deleteFirstColumn(wideSoreted); //удаляем временный первый столбец
+		int[] firstCol = exportFirstColumn(widerArr); 
+		int[] sortedFirstCol = bubbleSort(firstCol);  
+			if (reverse) {
+				sortedFirstCol = reverse(sortedFirstCol);
+			}
+		int[][] wideSoreted = sortWithGuideLine(widerArr, sortedFirstCol);
+		int[][] result = deleteFirstColumn(wideSoreted); 
 
 		return result;
 	}
@@ -182,16 +182,16 @@ public class JaggedArrayActions {
 	/*
 	 * добавляет в первую пустую ячейку каждой строки нового массива СУММУ по этой строке
 	 */
-	public static int[][] defineRowSum(int[][] jagArr) {
-		if (jagArr == null) {
+	public static int[][] defineRowSum(int[][] widerArr) {
+		if (widerArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[][] sumArr = addFirstEmptyColumn(jagArr);
-		for (int i = 0; i < jagArr.length; i++) {
+		int[][] sumArr = addFirstEmptyColumn(widerArr);
+		for (int i = 0; i < widerArr.length; i++) {
 			int sum = 0;
-			for (int j = 0; j < jagArr[i].length; j++) {
-				sum += jagArr[i][j];
+			for (int j = 0; j < widerArr[i].length; j++) {
+				sum += widerArr[i][j];
 			}
 			sumArr[i][0] = sum;
 		}
@@ -202,17 +202,17 @@ public class JaggedArrayActions {
 	 * добавляет в первую пустую ячейку каждой строки нового массива МАКСИМАЛЬНОЕ
 	 * значение по этой строке
 	 */
-	public static int[][] defineMax(int[][] jagArr) {
-		if (jagArr == null) {
+	public static int[][] defineMax(int[][] widerArr) {
+		if (widerArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[][] maxArr = addFirstEmptyColumn(jagArr);
-		for (int i = 0; i < jagArr.length; i++) {
-			int max = jagArr[i][0];
-			for (int j = 0; j < jagArr[i].length; j++) {
-				if (jagArr[i][j] > max) {
-					max = jagArr[i][j];
+		int[][] maxArr = addFirstEmptyColumn(widerArr);
+		for (int i = 0; i < widerArr.length; i++) {
+			int max = widerArr[i][0];
+			for (int j = 0; j < widerArr[i].length; j++) {
+				if (widerArr[i][j] > max) {
+					max = widerArr[i][j];
 				}
 			}
 			maxArr[i][0] = max;
@@ -224,17 +224,17 @@ public class JaggedArrayActions {
 	 * добавляет в первую пустую ячейку каждой строки нового массива МИНИМАЛЬНОЕ
 	 * значение по этой строке
 	 */
-	public static int[][] defineMin(int[][] jagArr) {
-		if (jagArr == null) {
+	public static int[][] defineMin(int[][] widerArr) {
+		if (widerArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[][] minArr = addFirstEmptyColumn(jagArr);
-		for (int i = 0; i < jagArr.length; i++) {
-			int min = jagArr[i][0];
-			for (int j = 0; j < jagArr[i].length; j++) {
-				if (jagArr[i][j] < min) {
-					min = jagArr[i][j];
+		int[][] minArr = addFirstEmptyColumn(widerArr);
+		for (int i = 0; i < widerArr.length; i++) {
+			int min = widerArr[i][0];
+			for (int j = 0; j < widerArr[i].length; j++) {
+				if (widerArr[i][j] < min) {
+					min = widerArr[i][j];
 				}
 			}
 			minArr[i][0] = min;

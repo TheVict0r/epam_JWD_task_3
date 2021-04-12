@@ -17,11 +17,11 @@ public class Main {
 		Printer.print(jagArr);
 
 		System.out.println("======Sorted by increasing SUM============================");
-		int[][] sortedIncrSum = JaggedArrayActions.sortRowsSum(jagArr, false);
+		int[][] sortedIncrSum = JaggedArrayActions.sortRowSum(jagArr, false);
 		Printer.print(sortedIncrSum);
 		
 		System.out.println("======Sorted by decreasing SUM============================");
-		int[][] sortedDecrSum = JaggedArrayActions.sortRowsSum(jagArr, true);
+		int[][] sortedDecrSum = JaggedArrayActions.sortRowSum(jagArr, true);
 		Printer.print(sortedDecrSum);
 		
 		System.out.println("======Sorted by increasing MAX element ===================");
