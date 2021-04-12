@@ -4,7 +4,7 @@ public class JaggedArrayActions {
 
 	/*
 	 * делает пустую копию исходного массива, 
-	 * shift - добавляет/убирает столбцы
+	 * параметр shift - добавляет/убирает столбцы
 	 */
 	public static int[][] makeEmptyCopy(int[][] original, int shift){
 		int[][] copy = new int[original.length][];
@@ -15,8 +15,8 @@ public class JaggedArrayActions {
 	}
 	
 	/*
-	 * копирует исходные данные в новый массив с отступом на 1 столбец 
-	 * (т.е. первый остается пустым)
+	 * копирует исходные данные в новый массив с отступом в 1 столбец 
+	 * (т.е. первый столбец остается пустым)
 	 */
 	public static int[][] addFirstEmptyColumn(int[][] jagArr) {
 		int[][] widerArr = makeEmptyCopy(jagArr, 1);//каждая строка на 1 ячейку длиннее 
@@ -28,19 +28,7 @@ public class JaggedArrayActions {
 		return widerArr;
 	}
 
-	/*
-	 * создает новый массив равный исходному, но без первого столбца
-	 */
-	public static int[][] deleteFirstColumn(int[][] widerArr){
-		int[][] shortArr = makeEmptyCopy(widerArr, -1);//каждая строка на 1 ячейку короче
-		for(int i = 0; i < shortArr.length; i++) {
-			for(int j = 0; j < shortArr[i].length; j++) {
-				shortArr[i][j] = widerArr[i][j+1];
-			}
-		}
-		return shortArr;
-	}
-
+	
 	/*
 	 * возвращает первый столбец многомерного массива в виде одномерного массива
 	 */
@@ -53,7 +41,21 @@ public class JaggedArrayActions {
 	}
 	
 	/*
-	 * обычная "пузырьковая" сортировка
+	 * создает новый массив равный исходному, но без первого столбца
+	 * (т.е. удаляет первый столбец)
+	 */
+	public static int[][] deleteFirstColumn(int[][] widerArr){
+		int[][] shortArr = makeEmptyCopy(widerArr, -1);//каждая строка на 1 ячейку короче
+		for(int i = 0; i < shortArr.length; i++) {
+			for(int j = 0; j < shortArr[i].length; j++) {
+				shortArr[i][j] = widerArr[i][j+1];
+			}
+		}
+		return shortArr;
+	}
+	
+	/*
+	 * обычная "пузырьковая" сортировка одномерного массива
 	 */
 	public static int[] bubbleSort(int[] array) {
 		for (int i = 0; i < array.length - 1; i++) {
@@ -73,26 +75,28 @@ public class JaggedArrayActions {
 		return array;
 	}
 	
+	/*
+	 * сортирует двумерный массив(1) в соответствии с одномерным массивом(2), 
+	 * который соотвествует первому столбцу (1)
+	 * метод создает новый двумерный массив 
+	 * в который копирует строки из (1) в порядке, определенном в (2)
+	 */
 	public static int[][] sortWithGuideLine(int[][] widerArr, int[] guideArr){
 		if(widerArr.length != guideArr.length) {
 			//throw new ArrayLengthInconsistencyException("Arrays have different length") 
 			// пока что не реализовано
 		}
-		
 		int[][] sorted = makeEmptyCopy(widerArr, 0);
-		
-		for(int i = 0; i < sorted.length; i++) {
-			for(int j = 0; j < guideArr.length; j++) {
-				for(int k = 0; k < widerArr.length; k++) {
-					if(guideArr[j] == widerArr[i][0]) {
-						sorted[i] = widerArr[k];
+		for(int i = 0; i < sorted.length; i++) { //перебираем финальный массив i - актуальная строка
+			for(int j = 0; j < guideArr.length; j++) { //перебираем отсортированный одномерный массив j - актуально значение
+				for(int k = 0; k < widerArr.length; k++) {//перебираем исходный массив k - актуальная строка
+					if(widerArr[k][0] == guideArr[j]) {
+						sorted[j] = widerArr[k];
 					}
 				}
 			}
 		}
-		
 		return sorted;
-		
 	}
 	
 	
