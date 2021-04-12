@@ -1,8 +1,5 @@
 package by.epamtc.task3.ex1.scanner;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class DataScanner {
