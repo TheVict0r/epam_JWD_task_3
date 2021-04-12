@@ -17,27 +17,27 @@ public class Main {
 		Printer.print(jagArr);
 
 		System.out.println("======Sorted by increasing SUM============================");
-		int[][] sortedIncrSum = JaggedArrayActions.sortRowSum(jagArr, false);
+		int[][] sortedIncrSum = JaggedArrayActions.sortBySum(jagArr, false);
 		Printer.print(sortedIncrSum);
 		
 		System.out.println("======Sorted by decreasing SUM============================");
-		int[][] sortedDecrSum = JaggedArrayActions.sortRowSum(jagArr, true);
+		int[][] sortedDecrSum = JaggedArrayActions.sortBySum(jagArr, true);
 		Printer.print(sortedDecrSum);
 		
 		System.out.println("======Sorted by increasing MAX element ===================");
-		int[][] sortedIncrMax = JaggedArrayActions.sortMaxElement(jagArr, false);
+		int[][] sortedIncrMax = JaggedArrayActions.sortByMax(jagArr, false);
 		Printer.print(sortedIncrMax);
 		
 		System.out.println("======Sorted by decreasing MAX element ===================");
-		int[][] sortedDecrMax = JaggedArrayActions.sortMaxElement(jagArr, true);
+		int[][] sortedDecrMax = JaggedArrayActions.sortByMax(jagArr, true);
 		Printer.print(sortedDecrMax);
 		
 		System.out.println("======Sorted by increasing MIN element ===================");
-		int[][] sortedIncrMin = JaggedArrayActions.sortMinElement(jagArr, false);
+		int[][] sortedIncrMin = JaggedArrayActions.sortByMin(jagArr, false);
 		Printer.print(sortedIncrMin);
 		
 		System.out.println("======Sorted by decreasing MIN element ===================");
-		int[][] sortedDecrMin = JaggedArrayActions.sortMinElement(jagArr, true);
+		int[][] sortedDecrMin = JaggedArrayActions.sortByMin(jagArr, true);
 		Printer.print(sortedDecrMin);
 
 		
