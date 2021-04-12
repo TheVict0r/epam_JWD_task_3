@@ -8,7 +8,8 @@ public class JaggedArrayActions {
 			// пока что не реализовано
 		}
 		int[][] withSum = defineRowSum(jagArr);
-		int[][] result = transformToSorted(withSum, reverse);
+		int[][] sorted = sortByFirstColumn(withSum, reverse);
+		int[][] result = deleteFirstColumn(sorted); //специально не стал добавлять в предыдущий метод - single responsibility
 		
 		return result;
 	}
@@ -19,8 +20,9 @@ public class JaggedArrayActions {
 			// пока что не реализовано
 		}
 		int[][] withMax = defineRowMax(jagArr);
-		int[][] result = transformToSorted(withMax, reverse);
-
+		int[][] sorted = sortByFirstColumn(withMax, reverse);
+		int[][] result = deleteFirstColumn(sorted);
+		
 		return result;
 	}
 
@@ -30,60 +32,112 @@ public class JaggedArrayActions {
 			// пока что не реализовано
 		}
 		int[][] withMin = defineRowMin(jagArr);
-		int[][] result = transformToSorted(withMin, reverse);
-
+		int[][] sorted = sortByFirstColumn(withMin, reverse);
+		int[][] result = deleteFirstColumn(sorted);
+		
 		return result;
 	}
 
 	/*
-	 * сортирует массив по временной первой колонке с промежуточными расчетами после чего удаляет ее
+	 * добавляет первую пустую ячейку в каждую строку, 
+	 * в ней рассчитывается СУММА по этой строке
 	 */
-	public static int[][] transformToSorted(int[][] wideArr, boolean reverse){
+	public static int[][] defineRowSum(int[][] jagArr) {
+		if (jagArr == null) {
+			// throw new NullArrayException("Jagged array variable equals to null")
+			// пока что не реализовано
+		}
+		int[][] sumArr = addFirstEmptyColumn(jagArr);
+		
+		for (int i = 0; i < jagArr.length; i++) {
+			int sum = 0;
+			for (int j = 0; j < jagArr[i].length; j++) {
+				sum += jagArr[i][j];
+			}
+			sumArr[i][0] = sum;
+		}
+		return sumArr;
+	}
+
+	/*
+	 * добавляет первую пустую ячейку в каждую строку, 
+	 * в ней рассчитывается МАКСИМАЛЬНОЕ значение по этой строке
+	 */
+	public static int[][] defineRowMax(int[][] jagArr) {
+		if (jagArr == null) {
+			// throw new NullArrayException("Jagged array variable equals to null")
+			// пока что не реализовано
+		}
+		int[][] maxArr = addFirstEmptyColumn(jagArr);
+		
+		for (int i = 0; i < jagArr.length; i++) {
+			int max = jagArr[i][0];
+			for (int j = 0; j < jagArr[i].length; j++) {
+				if (jagArr[i][j] > max) {
+					max = jagArr[i][j];
+				}
+			}
+			maxArr[i][0] = max;
+		}
+		return maxArr;
+	}
+
+	/*
+	 * добавляет первую пустую ячейку в каждую строку, 
+	 * в ней рассчитывается  МИНИМАЛЬНОЕ значение по этой строке
+	 */
+	public static int[][] defineRowMin(int[][] jagArr) {
+		if (jagArr == null) {
+			// throw new NullArrayException("Jagged array variable equals to null")
+			// пока что не реализовано
+		}
+		int[][] minArr = addFirstEmptyColumn(jagArr);
+		
+		for (int i = 0; i < jagArr.length; i++) {
+			int min = jagArr[i][0];
+			for (int j = 0; j < jagArr[i].length; j++) {
+				if (jagArr[i][j] < min) {
+					min = jagArr[i][j];
+				}
+			}
+			minArr[i][0] = min;
+		}
+		return minArr;
+	}
+
+	
+	
+	
+	public static int[][] sortByFirstColumn(int[][] wideArr, boolean reverse) {
 		if (wideArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[] firstCol = exportFirstColumn(wideArr); 
-		int[] sortedFirstCol = bubbleSort(firstCol);  
-			if (reverse) {
-				sortedFirstCol = reverse(sortedFirstCol);
-			}
-		int[][] wideSoreted = sortWithGuideLine(wideArr, sortedFirstCol);
-		int[][] result = deleteFirstColumn(wideSoreted); 
+		int[] firstCol = exportFirstColumn(wideArr);
+		int[] sortedFirstCol = bubbleSort(firstCol);
+				if (reverse) {
+					sortedFirstCol = reverse(sortedFirstCol);
+				}
 
-		return result;
-	}
-	
-	/*
-	 * сортирует двумерный массив по первому столбцу в соответствии с одномерным массивом
-	 */
-	public static int[][] sortWithGuideLine(int[][] wideArr, int[] guideArr) {
-		if (wideArr == null || guideArr == null) {
-			// throw new NullArrayException("Array variable equals to null")
-			// пока что не реализовано
-		}
-		if (wideArr.length != guideArr.length) {
-			// throw new ArrayLengthInconsistencyException("Arrays have different lengths")
-			// пока что не реализовано
-		}
-		int[][] sorted = makeEmptyCopy(wideArr, 0);
-		for (int i = 0; i < sorted.length; i++) { // перебираем финальный массив i - актуальная строка
-			for (int j = 0; j < guideArr.length; j++) { // перебираем отсортированный одномерный массив j - актуальное значение
-				for (int k = 0; k < wideArr.length; k++) {// перебираем исходный массив k - актуальная строка
-					if (wideArr[k][0] == guideArr[j]) {
-						sorted[j] = wideArr[k];
+		int[][] sortedArr = makeEmptyCopy(wideArr, 0);
+
+		for (int i = 0; i < sortedArr.length; i++) { // перебираем финальный массив - туда сортируем
+			for (int j = 0; j < sortedFirstCol.length; j++) { // перебираем отсортированный первый столбец 
+				for (int k = 0; k < wideArr.length; k++) {// перебираем исходный неотсортированный массив 
+					if (wideArr[k][0] == sortedFirstCol[j]) {
+						sortedArr[j] = wideArr[k];
 					}
 				}
 			}
 		}
-		return sorted;
+
+		return sortedArr;
 	}
 
-	/*
-	 * делает пустую копию исходного массива, 
-	 * shift - добавляет/убирает столбцы
-	 */
-	public static int[][] makeEmptyCopy(int[][] original, int shift) {
+
+	
+
+	public static int[][] makeEmptyCopy(int[][] original, int shift) { //shift - добавляет/убирает столбцы
 		if (original == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
@@ -121,7 +175,20 @@ public class JaggedArrayActions {
 		return firstColumn;
 	}
 
-	
+	public static int[][] deleteFirstColumn(int[][] wideArr) {
+		if (wideArr == null) {
+			// throw new NullArrayException("Jagged array variable equals to null")
+			// пока что не реализовано
+		}
+		int[][] shortArr = makeEmptyCopy(wideArr, -1);// каждая строка на 1 ячейку короче
+		for (int i = 0; i < shortArr.length; i++) {
+			for (int j = 0; j < shortArr[i].length; j++) {
+				shortArr[i][j] = wideArr[i][j + 1];
+			}
+		}
+		return shortArr;
+	}
+
 	public static int[] bubbleSort(int[] array) {
 		if (array == null) {
 			// throw new NullArrayException("Array variable equals to null")
@@ -156,81 +223,5 @@ public class JaggedArrayActions {
 		return reversed;
 	}
 
-	public static int[][] deleteFirstColumn(int[][] wideArr) {
-		if (wideArr == null) {
-			// throw new NullArrayException("Jagged array variable equals to null")
-			// пока что не реализовано
-		}
-		int[][] shortArr = makeEmptyCopy(wideArr, -1);// каждая строка на 1 ячейку короче
-		for (int i = 0; i < shortArr.length; i++) {
-			for (int j = 0; j < shortArr[i].length; j++) {
-				shortArr[i][j] = wideArr[i][j + 1];
-			}
-		}
-		return shortArr;
-	}
-
-	/*
-	 * добавляет в первую пустую ячейку каждой строки нового массива СУММУ по этой строке
-	 */
-	public static int[][] defineRowSum(int[][] wideArr) {
-		if (wideArr == null) {
-			// throw new NullArrayException("Jagged array variable equals to null")
-			// пока что не реализовано
-		}
-		int[][] sumArr = addFirstEmptyColumn(wideArr);
-		for (int i = 0; i < wideArr.length; i++) {
-			int sum = 0;
-			for (int j = 0; j < wideArr[i].length; j++) {
-				sum += wideArr[i][j];
-			}
-			sumArr[i][0] = sum;
-		}
-		return sumArr;
-	}
-
-	/*
-	 * добавляет в первую пустую ячейку каждой строки нового массива МАКСИМАЛЬНОЕ
-	 * значение по этой строке
-	 */
-	public static int[][] defineRowMax(int[][] wideArr) {
-		if (wideArr == null) {
-			// throw new NullArrayException("Jagged array variable equals to null")
-			// пока что не реализовано
-		}
-		int[][] maxArr = addFirstEmptyColumn(wideArr);
-		for (int i = 0; i < wideArr.length; i++) {
-			int max = wideArr[i][0];
-			for (int j = 0; j < wideArr[i].length; j++) {
-				if (wideArr[i][j] > max) {
-					max = wideArr[i][j];
-				}
-			}
-			maxArr[i][0] = max;
-		}
-		return maxArr;
-	}
-
-	/*
-	 * добавляет в первую пустую ячейку каждой строки нового массива МИНИМАЛЬНОЕ
-	 * значение по этой строке
-	 */
-	public static int[][] defineRowMin(int[][] wideArr) {
-		if (wideArr == null) {
-			// throw new NullArrayException("Jagged array variable equals to null")
-			// пока что не реализовано
-		}
-		int[][] minArr = addFirstEmptyColumn(wideArr);
-		for (int i = 0; i < wideArr.length; i++) {
-			int min = wideArr[i][0];
-			for (int j = 0; j < wideArr[i].length; j++) {
-				if (wideArr[i][j] < min) {
-					min = wideArr[i][j];
-				}
-			}
-			minArr[i][0] = min;
-		}
-		return minArr;
-	}
 
 }
