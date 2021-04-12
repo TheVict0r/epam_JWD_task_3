@@ -23,7 +23,7 @@ public class JaggedArrayActions {
 	}
 
 	/*
-	 * сортировка в порядке возрастания / убывания сумм элементов строк матрицы
+	 * сортировка в порядке возрастания / убывания максимальных элементов строк матрицы
 	 */
 	public static int[][] sortMaxElement(int[][] jagArr, boolean reverse) {
 		if (jagArr == null) {
@@ -43,7 +43,7 @@ public class JaggedArrayActions {
 	}
 
 	/*
-	 * сортировка в порядке возрастания / убывания сумм элементов строк матрицы
+	 * сортировка в порядке возрастания / убывания минимальных элементов строк матрицы
 	 */
 	public static int[][] sortMinElement(int[][] jagArr, boolean reverse) {
 		if (jagArr == null) {
