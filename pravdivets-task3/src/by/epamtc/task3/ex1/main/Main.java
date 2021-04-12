@@ -59,31 +59,38 @@ public class Main {
 		ArrayNumberActions.fillWithRandom(array732, 100);
 		System.out.println("fill random without bound: " + array731);
 		System.out.println("fill random with    bound: " + array732);
+
+		//7.1 из файла
+		Array array71 = null;
+		String filePath = "C:\\file.txt";
+		try {
+			array71 = Array.fillFromFile(filePath);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		System.out.println("fill from file: " + array71);
+
 		
 		//7.2 с консоли
 		Array array72 = new Array(5);
 		array72.fillFromConsole();
 		System.out.println("Array from console:  " + array72);
-		
-
-		
-//		System.out.println(actions.isThreeDigtNoIdentical(855));
-//		
-//		Array array3 = new Array(10);
-//		System.out.println(array3);
-//		String s = "C:\\file.txt";
-//		System.out.println(s);
-//		try {
-//			array3.fillFromFile(s);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(array3);
-//		
 
 	}
+
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//вспомогательный метод, делал исключительно для тестирования, поэтому Exception на входной массив не делал
 	public static void printArray(int[] array) {
 		for(int i : array) {
 			System.out.print(i + " ");

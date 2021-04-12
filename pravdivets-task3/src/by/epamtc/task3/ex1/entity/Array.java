@@ -3,7 +3,6 @@ package by.epamtc.task3.ex1.entity;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Scanner;
 
 import by.epamtc.task3.ex1.scanner.DataScanner;
 
@@ -113,7 +112,6 @@ public class Array {
 					minIdx = j;
 				}
 			}
-
 			int tmp = array[minIdx];
 			array[minIdx] = array[i];
 			array[i] = tmp;
@@ -139,11 +137,11 @@ public class Array {
 
 	public int searchBinary(int item) {
 		if (!isSorted()) {
-			// throws NotSortedArrayException("The array is not sorted. Binary search
-			// impossible") - пока без реализации
+			// throws NotSortedArrayException("The array is not sorted. Binary search impossible") 
+			// пока без реализации
 		}
 
-		int idx = -1; // это значение индекса и будет выдано, если искомое число не будет найдено
+		int idx = -1; // это значение индекса будет выдано, если искомое число не будет найдено
 		int low = 0;
 		int high = array.length;
 
@@ -198,17 +196,41 @@ public class Array {
 
 	}
 
-	public void fillFromFile(String fileName) throws IOException {
-
-		FileInputStream fileInputStream = new FileInputStream(fileName);
-
-		Scanner scanner = new Scanner(fileInputStream);
-
-		while (scanner.hasNext()) {
-			int i = scanner.nextInt();
-			System.out.print(i + " ");
+	
+	public static Array fillFromFile(String fileName) throws IOException {
+		//предполагается, что файл содержит числа, разделенные пробелом
+		if(fileName == null) {
+			//throw new NoFileNameException("No file name")
 		}
-		fileInputStream.close();
+		
+		File file = new File(fileName);
+
+		StringBuilder strTemp = new StringBuilder();
+		try (FileInputStream fileInputStream = new FileInputStream(file)) {
+			int a;
+			while ((a = fileInputStream.read()) != -1) {
+				strTemp.append((char) a);
+			}
+		} catch (IOException ex) {
+			System.out.println(ex.getMessage());
+		}
+
+		System.out.println(strTemp);
+
+		String strTemp2 = strTemp.toString();
+
+		String[] strArr = strTemp2.split(" ");
+
+		int[] intArr = new int[strArr.length];
+		for (int i = 0; i < intArr.length; i++) {
+			intArr[i] = Integer.parseInt(strArr[i]);
+		}
+		
+		Array array = new Array(intArr);
+		
+		return array;
+		
 	}
 
-}
+}		
+
