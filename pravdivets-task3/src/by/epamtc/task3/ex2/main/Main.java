@@ -21,8 +21,10 @@ public class Main {
 		System.out.println("=====================================");
 
 		Print.print(JaggedArrayActions.defineRowSum(jagArr));
-		
-		
+		System.out.println("=====================================");
+		Print.print(JaggedArrayActions.defineMax(jagArr));
+		System.out.println("=====================================");
+		Print.print(JaggedArrayActions.defineMin(jagArr));
 	}
 
 }
