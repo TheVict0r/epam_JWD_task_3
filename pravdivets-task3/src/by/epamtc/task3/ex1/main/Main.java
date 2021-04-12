@@ -82,9 +82,6 @@ public class Main {
 //		System.out.println(array3);
 //		
 
-		
-		
-		
 	}
 	
 	public static void printArray(int[] array) {
