@@ -10,15 +10,9 @@ public class JaggedArrayActions {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[][] wideSummed = defineRowSum(jagArr);
-		int[] firstCol = exportFirstColumn(wideSummed);
-		int[] sortedFirstCol = bubbleSort(firstCol);
-		if (reverse) {
-			sortedFirstCol = reverse(sortedFirstCol);
-		}
-		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortedFirstCol);
-		int[][] result = deleteFirstColumn(wideSummedSoreted);
-
+		int[][] withSum = defineRowSum(jagArr);
+		int[][] result = sortJaggedArray(withSum, reverse);
+		
 		return result;
 	}
 
@@ -30,14 +24,8 @@ public class JaggedArrayActions {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[][] wideSummed = defineMax(jagArr);
-		int[] firstCol = exportFirstColumn(wideSummed);
-		int[] sortedFirstCol = bubbleSort(firstCol);
-		if (reverse) {
-			sortedFirstCol = reverse(sortedFirstCol);
-		}
-		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortedFirstCol);
-		int[][] result = deleteFirstColumn(wideSummedSoreted);
+		int[][] withMax = defineMax(jagArr);
+		int[][] result = sortJaggedArray(withMax, reverse);
 
 		return result;
 	}
@@ -50,28 +38,68 @@ public class JaggedArrayActions {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-		int[][] wideSummed = defineMin(jagArr);
-		int[] firstCol = exportFirstColumn(wideSummed);
-		int[] sortedFirstCol = bubbleSort(firstCol);
-		if (reverse) {
-			sortedFirstCol = reverse(sortedFirstCol);
-		}
-		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortedFirstCol);
-		int[][] result = deleteFirstColumn(wideSummedSoreted);
+		int[][] withMin = defineMin(jagArr);
+		int[][] result = sortJaggedArray(withMin, reverse);
 
 		return result;
 	}
 
 	/*
-	 * делает пустую копию исходного массива, параметр shift - добавляет/убирает
-	 * столбцы
+	 * сортирует массив по временной первой колонке с промежуточными расчетами после чего удаляет ее
+	 */
+	public static int[][] sortJaggedArray(int[][] widerArr, boolean reverse){
+		if (widerArr == null) {
+			// throw new NullArrayException("Jagged array variable equals to null")
+			// пока что не реализовано
+		}
+		int[] firstCol = exportFirstColumn(widerArr); //извлекаем первый столбец
+		int[] sortedFirstCol = bubbleSort(firstCol);  //сортируем первый столбец
+		if (reverse) {
+			sortedFirstCol = reverse(sortedFirstCol);
+		}
+		int[][] wideSoreted = sortWithGuideLine(widerArr, sortedFirstCol);//сортируем двумерный массив в соответствии с первым столбцом
+		int[][] result = deleteFirstColumn(wideSoreted); //удаляем временный первый столбец
+
+		return result;
+	}
+	
+	/*
+	 * сортирует двумерный массив(1) в соответствии с одномерным массивом(2),
+	 * который соотвествует первому столбцу массива(1) метод создает новый двумерный массив
+	 * в который копирует строки из (1) в порядке, определенном в (2)
+	 */
+	public static int[][] sortWithGuideLine(int[][] widerArr, int[] guideArr) {
+		if (widerArr == null || guideArr == null) {
+			// throw new NullArrayException("Array variable equals to null")
+			// пока что не реализовано
+		}
+		if (widerArr.length != guideArr.length) {
+			// throw new ArrayLengthInconsistencyException("Arrays have different lengths")
+			// пока что не реализовано
+		}
+		int[][] sorted = makeEmptyCopy(widerArr, 0);
+		for (int i = 0; i < sorted.length; i++) { // перебираем финальный массив i - актуальная строка
+			for (int j = 0; j < guideArr.length; j++) { // перебираем отсортированный одномерный массив j - актуально
+														// значение
+				for (int k = 0; k < widerArr.length; k++) {// перебираем исходный массив k - актуальная строка
+					if (widerArr[k][0] == guideArr[j]) {
+						sorted[j] = widerArr[k];
+					}
+				}
+			}
+		}
+		return sorted;
+	}
+
+	/*
+	 * делает пустую копию исходного массива, 
+	 * параметр shift - добавляет/убирает столбцы
 	 */
 	public static int[][] makeEmptyCopy(int[][] original, int shift) {
 		if (original == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
 		}
-
 		int[][] copy = new int[original.length][];
 		for (int i = 0; i < original.length; i++) {
 			copy[i] = new int[original[i].length + shift];
@@ -165,34 +193,6 @@ public class JaggedArrayActions {
 			}
 		}
 		return shortArr;
-	}
-
-	/*
-	 * сортирует двумерный массив(1) в соответствии с одномерным массивом(2),
-	 * который соотвествует первому столбцу (1) метод создает новый двумерный массив
-	 * в который копирует строки из (1) в порядке, определенном в (2)
-	 */
-	public static int[][] sortWithGuideLine(int[][] widerArr, int[] guideArr) {
-		if (widerArr == null || guideArr == null) {
-			// throw new NullArrayException("Array variable equals to null")
-			// пока что не реализовано
-		}
-		if (widerArr.length != guideArr.length) {
-			// throw new ArrayLengthInconsistencyException("Arrays have different lengths")
-			// пока что не реализовано
-		}
-		int[][] sorted = makeEmptyCopy(widerArr, 0);
-		for (int i = 0; i < sorted.length; i++) { // перебираем финальный массив i - актуальная строка
-			for (int j = 0; j < guideArr.length; j++) { // перебираем отсортированный одномерный массив j - актуально
-														// значение
-				for (int k = 0; k < widerArr.length; k++) {// перебираем исходный массив k - актуальная строка
-					if (widerArr[k][0] == guideArr[j]) {
-						sorted[j] = widerArr[k];
-					}
-				}
-			}
-		}
-		return sorted;
 	}
 
 	/*
