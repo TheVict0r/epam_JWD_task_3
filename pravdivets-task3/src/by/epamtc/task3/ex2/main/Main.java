@@ -1,5 +1,7 @@
 package by.epamtc.task3.ex2.main;
 
+import by.epamtc.task3.ex2.presentation.Print;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -10,6 +12,8 @@ public class Main {
 		jagArr[3] = new int[]{24, 37, 569, 42, 99};
 		jagArr[4] = new int[]{29, 48, 18,  24, 81, 54, 3};
 
+		Print.print(jagArr);
+		
 	}
 
 }
