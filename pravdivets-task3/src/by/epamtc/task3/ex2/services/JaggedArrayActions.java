@@ -2,6 +2,30 @@ package by.epamtc.task3.ex2.services;
 
 public class JaggedArrayActions {
 
+	public static int[][] sortIncreasingRowsSum(int[][] jagArr){
+		int[][] wideSummed = defineRowSum(jagArr);
+		int[] firstCol = exportFirstColumn(wideSummed);
+		int[] sortFirstCol = bubbleSort(firstCol);
+		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortFirstCol);
+		int[][] result = deleteFirstColumn(wideSummedSoreted);
+		
+		return result;
+	}
+	
+	public static int[][] sortDecreasingRowsSum(int[][] jagArr){
+		int[][] wideSummed = defineRowSum(jagArr);
+		int[] firstCol = exportFirstColumn(wideSummed);
+		int[] sortFirstCol = bubbleSort(firstCol);
+		int[] sortDecrFirstCol = reverse(sortFirstCol);
+		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortDecrFirstCol);
+		int[][] result = deleteFirstColumn(wideSummedSoreted);
+		
+		return result;
+	}
+	
+	
+	
+	
 	/*
 	 * делает пустую копию исходного массива, 
 	 * параметр shift - добавляет/убирает столбцы
@@ -41,20 +65,6 @@ public class JaggedArrayActions {
 	}
 	
 	/*
-	 * создает новый массив равный исходному, но без первого столбца
-	 * (т.е. удаляет первый столбец)
-	 */
-	public static int[][] deleteFirstColumn(int[][] widerArr){
-		int[][] shortArr = makeEmptyCopy(widerArr, -1);//каждая строка на 1 ячейку короче
-		for(int i = 0; i < shortArr.length; i++) {
-			for(int j = 0; j < shortArr[i].length; j++) {
-				shortArr[i][j] = widerArr[i][j+1];
-			}
-		}
-		return shortArr;
-	}
-	
-	/*
 	 * обычная "пузырьковая" сортировка одномерного массива
 	 */
 	public static int[] bubbleSort(int[] array) {
@@ -74,6 +84,30 @@ public class JaggedArrayActions {
 		}
 		return array;
 	}
+
+	
+	public static int[] reverse(int[] array) {
+		int[] reversed = new int[array.length];
+		for(int i = 0; i < reversed.length; i++) {
+			reversed[i] = array[array.length - i -1];
+		}
+		return reversed;
+	}
+	
+	/*
+	 * создает новый массив равный исходному, но без первого столбца
+	 * (т.е. удаляет первый столбец)
+	 */
+	public static int[][] deleteFirstColumn(int[][] widerArr){
+		int[][] shortArr = makeEmptyCopy(widerArr, -1);//каждая строка на 1 ячейку короче
+		for(int i = 0; i < shortArr.length; i++) {
+			for(int j = 0; j < shortArr[i].length; j++) {
+				shortArr[i][j] = widerArr[i][j+1];
+			}
+		}
+		return shortArr;
+	}
+	
 	
 	/*
 	 * сортирует двумерный массив(1) в соответствии с одномерным массивом(2), 
