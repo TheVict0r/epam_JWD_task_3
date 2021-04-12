@@ -11,7 +11,7 @@ public class JaggedArrayActions {
 			// пока что не реализовано
 		}
 		int[][] withSum = defineRowSum(jagArr);
-		int[][] result = sortJaggedArray(withSum, reverse);
+		int[][] result = transformIntoSorted(withSum, reverse);
 		
 		return result;
 	}
@@ -25,7 +25,7 @@ public class JaggedArrayActions {
 			// пока что не реализовано
 		}
 		int[][] withMax = defineMax(jagArr);
-		int[][] result = sortJaggedArray(withMax, reverse);
+		int[][] result = transformIntoSorted(withMax, reverse);
 
 		return result;
 	}
@@ -39,7 +39,7 @@ public class JaggedArrayActions {
 			// пока что не реализовано
 		}
 		int[][] withMin = defineMin(jagArr);
-		int[][] result = sortJaggedArray(withMin, reverse);
+		int[][] result = transformIntoSorted(withMin, reverse);
 
 		return result;
 	}
@@ -47,7 +47,7 @@ public class JaggedArrayActions {
 	/*
 	 * сортирует массив по временной первой колонке с промежуточными расчетами после чего удаляет ее
 	 */
-	public static int[][] sortJaggedArray(int[][] widerArr, boolean reverse){
+	public static int[][] transformIntoSorted(int[][] widerArr, boolean reverse){
 		if (widerArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
 			// пока что не реализовано
@@ -64,9 +64,7 @@ public class JaggedArrayActions {
 	}
 	
 	/*
-	 * сортирует двумерный массив(1) в соответствии с одномерным массивом(2),
-	 * который соотвествует первому столбцу массива(1) метод создает новый двумерный массив
-	 * в который копирует строки из (1) в порядке, определенном в (2)
+	 * сортирует двумерный массив по первому столбцу в соответствии с одномерным массивом
 	 */
 	public static int[][] sortWithGuideLine(int[][] widerArr, int[] guideArr) {
 		if (widerArr == null || guideArr == null) {
@@ -79,8 +77,7 @@ public class JaggedArrayActions {
 		}
 		int[][] sorted = makeEmptyCopy(widerArr, 0);
 		for (int i = 0; i < sorted.length; i++) { // перебираем финальный массив i - актуальная строка
-			for (int j = 0; j < guideArr.length; j++) { // перебираем отсортированный одномерный массив j - актуально
-														// значение
+			for (int j = 0; j < guideArr.length; j++) { // перебираем отсортированный одномерный массив j - актуальное значение
 				for (int k = 0; k < widerArr.length; k++) {// перебираем исходный массив k - актуальная строка
 					if (widerArr[k][0] == guideArr[j]) {
 						sorted[j] = widerArr[k];
@@ -93,7 +90,7 @@ public class JaggedArrayActions {
 
 	/*
 	 * делает пустую копию исходного массива, 
-	 * параметр shift - добавляет/убирает столбцы
+	 * shift - добавляет/убирает столбцы
 	 */
 	public static int[][] makeEmptyCopy(int[][] original, int shift) {
 		if (original == null) {
@@ -107,10 +104,6 @@ public class JaggedArrayActions {
 		return copy;
 	}
 
-	/*
-	 * копирует исходные данные в новый массив с отступом в 1 столбец (т.е. первый
-	 * столбец остается пустым)
-	 */
 	public static int[][] addFirstEmptyColumn(int[][] jagArr) {
 		if (jagArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
@@ -125,9 +118,6 @@ public class JaggedArrayActions {
 		return widerArr;
 	}
 
-	/*
-	 * возвращает первый столбец многомерного массива в виде одномерного массива
-	 */
 	public static int[] exportFirstColumn(int[][] widerArr) {
 		if (widerArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
@@ -140,9 +130,7 @@ public class JaggedArrayActions {
 		return firstColumn;
 	}
 
-	/*
-	 * обычная "пузырьковая" сортировка одномерного массива
-	 */
+	
 	public static int[] bubbleSort(int[] array) {
 		if (array == null) {
 			// throw new NullArrayException("Array variable equals to null")
@@ -177,10 +165,6 @@ public class JaggedArrayActions {
 		return reversed;
 	}
 
-	/*
-	 * создает новый массив равный исходному, но без первого столбца (т.е. удаляет
-	 * первый столбец)
-	 */
 	public static int[][] deleteFirstColumn(int[][] widerArr) {
 		if (widerArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
@@ -196,8 +180,7 @@ public class JaggedArrayActions {
 	}
 
 	/*
-	 * добавляет в первую пустую ячейку каждой строки нового массива СУММУ по этой
-	 * строке
+	 * добавляет в первую пустую ячейку каждой строки нового массива СУММУ по этой строке
 	 */
 	public static int[][] defineRowSum(int[][] jagArr) {
 		if (jagArr == null) {
