@@ -16,7 +16,7 @@ public class JaggedArrayActions {
 	
 	/*
 	 * копирует исходные данные в новый массив с отступом на 1 столбец 
-	 * (первый остается пустым)
+	 * (т.е. первый остается пустым)
 	 */
 	public static int[][] addFirstEmptyColumn(int[][] jagArr) {
 		int[][] widerArr = makeEmptyCopy(jagArr, 1);//каждая строка на 1 ячейку длиннее 
@@ -31,7 +31,7 @@ public class JaggedArrayActions {
 	/*
 	 * создает новый массив равный исходному, но без первого столбца
 	 */
-	public static int[][] cutFirstColumn(int[][] widerArr){
+	public static int[][] deleteFirstColumn(int[][] widerArr){
 		int[][] shortArr = makeEmptyCopy(widerArr, -1);//каждая строка на 1 ячейку короче
 		for(int i = 0; i < shortArr.length; i++) {
 			for(int j = 0; j < shortArr[i].length; j++) {
@@ -40,9 +40,18 @@ public class JaggedArrayActions {
 		}
 		return shortArr;
 	}
+
+	public static int[] exportFirstColumn(int[][] widerArr){
+		int[] firstColumn = new int[widerArr.length];
+		for(int i = 0; i < widerArr.length; i++) {
+			firstColumn[i] = widerArr[i][0];
+		}
+		return firstColumn;
+	}
+	
 	
 	/*
-	 * добавляет в первый пустой столбец нового массива сумму по строке
+	 * добавляет в первую пустую ячейку каждой строки нового массива СУММУ по этой строке
 	 */
 	public static int[][] defineRowSum(int[][] jagArr){
 		int[][] sumArr = addFirstEmptyColumn(jagArr);
@@ -55,7 +64,11 @@ public class JaggedArrayActions {
 		}
 		return sumArr;
 	}
+
 	
+	/*
+	 * добавляет в первую пустую ячейку каждой строки нового массива МАКСИМАЛЬНОЕ значение по этой строке
+	 */
 	public static int[][] defineMax(int[][] jagArr){
 		int[][] maxArr = addFirstEmptyColumn(jagArr);
 		for(int i = 0; i < jagArr.length; i++) {
@@ -69,7 +82,11 @@ public class JaggedArrayActions {
 		}
 		return maxArr;
 	}
+
 	
+	/*
+	 * добавляет в первую пустую ячейку каждой строки нового массива МИНИМАЛЬНОЕ значение по этой строке
+	 */
 	public static int[][] defineMin(int[][] jagArr){
 		int[][] minArr = addFirstEmptyColumn(jagArr);
 		for(int i = 0; i < jagArr.length; i++) {

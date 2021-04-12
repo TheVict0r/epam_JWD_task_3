@@ -13,18 +13,33 @@ public class Main {
 		jagArr[3] = new int[]{24, 37, 569, 42, 99};
 		jagArr[4] = new int[]{29, 48, 18,  24, 81, 54, 3};
 
-		Printer.print(jagArr);
-		System.out.println("=====================================");
 		
+		System.out.println("======First Array===================");
+		Printer.print(jagArr);
+		
+		System.out.println("======Wider Array=======================");
 		int[][] wideArr = JaggedArrayActions.addFirstEmptyColumn(jagArr);
 		Printer.print(wideArr);
-		System.out.println("=====================================");
-
-		Printer.print(JaggedArrayActions.defineRowSum(jagArr));
-		System.out.println("=====================================");
-		Printer.print(JaggedArrayActions.defineMax(jagArr));
-		System.out.println("=====================================");
-		Printer.print(JaggedArrayActions.defineMin(jagArr));
+		
+		
+		System.out.println("======Row Sum===================");
+		int[][] rowSum = JaggedArrayActions.defineRowSum(jagArr);
+		Printer.print(rowSum);
+		
+		System.out.println("======MAX============================");
+		int[][] maxArr = JaggedArrayActions.defineMax(jagArr);
+		Printer.print(maxArr );
+		
+		System.out.println("======min============================");
+		int[][] minArr = JaggedArrayActions.defineMin(jagArr);
+		Printer.print(minArr);
+		
+		System.out.println("======First Column (Row Sum)============================");
+		int[] firstColumn = JaggedArrayActions.exportFirstColumn(rowSum);
+		Printer.print(firstColumn);
+		
+		
+		
 	}
 
 }
