@@ -1,6 +1,6 @@
 package by.epamtc.task3.ex2.main;
 
-import by.epamtc.task3.ex2.presentation.Print;
+import by.epamtc.task3.ex2.presentation.Printer;
 import by.epamtc.task3.ex2.services.JaggedArrayActions;
 
 public class Main {
@@ -13,18 +13,18 @@ public class Main {
 		jagArr[3] = new int[]{24, 37, 569, 42, 99};
 		jagArr[4] = new int[]{29, 48, 18,  24, 81, 54, 3};
 
-		Print.print(jagArr);
+		Printer.print(jagArr);
 		System.out.println("=====================================");
 		
 		int[][] wideArr = JaggedArrayActions.addFirstEmptyColumn(jagArr);
-		Print.print(wideArr);
+		Printer.print(wideArr);
 		System.out.println("=====================================");
 
-		Print.print(JaggedArrayActions.defineRowSum(jagArr));
+		Printer.print(JaggedArrayActions.defineRowSum(jagArr));
 		System.out.println("=====================================");
-		Print.print(JaggedArrayActions.defineMax(jagArr));
+		Printer.print(JaggedArrayActions.defineMax(jagArr));
 		System.out.println("=====================================");
-		Print.print(JaggedArrayActions.defineMin(jagArr));
+		Printer.print(JaggedArrayActions.defineMin(jagArr));
 	}
 
 }
