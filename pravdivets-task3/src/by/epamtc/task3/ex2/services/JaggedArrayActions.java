@@ -5,8 +5,8 @@ public class JaggedArrayActions {
 	public static int[][] sortIncreasingRowsSum(int[][] jagArr){
 		int[][] wideSummed = defineRowSum(jagArr);
 		int[] firstCol = exportFirstColumn(wideSummed);
-		int[] sortFirstCol = bubbleSort(firstCol);
-		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortFirstCol);
+		int[] sortedFirstCol = bubbleSort(firstCol);
+		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortedFirstCol);
 		int[][] result = deleteFirstColumn(wideSummedSoreted);
 		
 		return result;
@@ -15,8 +15,8 @@ public class JaggedArrayActions {
 	public static int[][] sortDecreasingRowsSum(int[][] jagArr){
 		int[][] wideSummed = defineRowSum(jagArr);
 		int[] firstCol = exportFirstColumn(wideSummed);
-		int[] sortFirstCol = bubbleSort(firstCol);
-		int[] sortDecrFirstCol = reverse(sortFirstCol);
+		int[] sortedFirstCol = bubbleSort(firstCol);
+		int[] sortDecrFirstCol = reverse(sortedFirstCol);
 		int[][] wideSummedSoreted = sortWithGuideLine(wideSummed, sortDecrFirstCol);
 		int[][] result = deleteFirstColumn(wideSummedSoreted);
 		
