@@ -13,7 +13,6 @@ public class Main {
 		jagArr[3] = new int[]{24, 37, 569, 42, 99};
 		jagArr[4] = new int[]{29, 48, 18,  24, 81, 54, 3};
 
-	
 		System.out.println("======First Array=========================================");
 		Printer.print(jagArr);
 
