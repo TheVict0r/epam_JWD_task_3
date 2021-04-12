@@ -1,6 +1,7 @@
 package by.epamtc.task3.ex2.main;
 
 import by.epamtc.task3.ex2.presentation.Print;
+import by.epamtc.task3.ex2.services.JaggedArrayActions;
 
 public class Main {
 
@@ -13,6 +14,16 @@ public class Main {
 		jagArr[4] = new int[]{29, 48, 18,  24, 81, 54, 3};
 
 		Print.print(jagArr);
+		System.out.println("=====================================");
+		
+		int[][] wideArr = JaggedArrayActions.addFirstEmptyColumn(jagArr);
+		Print.print(wideArr);
+		System.out.println("=====================================");
+
+		int[][] shortArr = JaggedArrayActions.cutFirstColumn(wideArr);
+		Print.print(shortArr);
+		System.out.println("=====================================");
+		
 		
 	}
 
