@@ -26,18 +26,26 @@ public class Main {
 		int[][] rowSum = JaggedArrayActions.defineRowSum(jagArr);
 		Printer.print(rowSum);
 		
-		System.out.println("======MAX============================");
-		int[][] maxArr = JaggedArrayActions.defineMax(jagArr);
-		Printer.print(maxArr );
-		
-		System.out.println("======min============================");
-		int[][] minArr = JaggedArrayActions.defineMin(jagArr);
-		Printer.print(minArr);
+//		System.out.println("======MAX============================");
+//		int[][] maxArr = JaggedArrayActions.defineMax(jagArr);
+//		Printer.print(maxArr );
+//		
+//		System.out.println("======min============================");
+//		int[][] minArr = JaggedArrayActions.defineMin(jagArr);
+//		Printer.print(minArr);
 		
 		System.out.println("======First Column (Row Sum)============================");
 		int[] firstColumn = JaggedArrayActions.exportFirstColumn(rowSum);
 		Printer.print(firstColumn);
 		
+		System.out.println("======Bubble Sort First Column (Row Sum)============================");
+		JaggedArrayActions.bubbleSort(firstColumn);
+		Printer.print(firstColumn);
+		
+		System.out.println("======Sum Sorted============================");
+		int[][] sumSorted = JaggedArrayActions.sortWithGuideLine(rowSum, firstColumn);
+		Printer.print(sumSorted);
+				
 		
 		
 	}

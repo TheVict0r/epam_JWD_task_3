@@ -11,9 +11,9 @@ public class Printer {
 		}
 	}
 	
-	public static void print(int[] array) {
-		for(int i = 0; i < array.length; i++) {
-			System.out.print(array[i] + " ");
+	public static void print(int[] arr) {
+		for(int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
 		}
 		System.out.println();
 	}

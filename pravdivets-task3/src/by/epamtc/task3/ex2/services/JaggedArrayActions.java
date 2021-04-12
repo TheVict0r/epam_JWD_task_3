@@ -41,12 +41,58 @@ public class JaggedArrayActions {
 		return shortArr;
 	}
 
+	/*
+	 * возвращает первый столбец многомерного массива в виде одномерного массива
+	 */
 	public static int[] exportFirstColumn(int[][] widerArr){
 		int[] firstColumn = new int[widerArr.length];
 		for(int i = 0; i < widerArr.length; i++) {
 			firstColumn[i] = widerArr[i][0];
 		}
 		return firstColumn;
+	}
+	
+	/*
+	 * обычная "пузырьковая" сортировка
+	 */
+	public static int[] bubbleSort(int[] array) {
+		for (int i = 0; i < array.length - 1; i++) {
+			boolean noSwaps = true;
+			for (int j = 0; j < array.length - i - 1; j++) {
+				if (array[j] > array[j + 1]) {
+					int temp = array[j];
+					array[j] = array[j + 1];
+					array[j + 1] = temp;
+					noSwaps = false;
+				}
+			}
+			if (noSwaps) {
+				break;
+			}
+		}
+		return array;
+	}
+	
+	public static int[][] sortWithGuideLine(int[][] widerArr, int[] guideArr){
+		if(widerArr.length != guideArr.length) {
+			//throw new ArrayLengthInconsistencyException("Arrays have different length") 
+			// пока что не реализовано
+		}
+		
+		int[][] sorted = makeEmptyCopy(widerArr, 0);
+		
+		for(int i = 0; i < sorted.length; i++) {
+			for(int j = 0; j < guideArr.length; j++) {
+				for(int k = 0; k < widerArr.length; k++) {
+					if(guideArr[j] == widerArr[i][0]) {
+						sorted[i] = widerArr[k];
+					}
+				}
+			}
+		}
+		
+		return sorted;
+		
 	}
 	
 	
