@@ -71,7 +71,7 @@ public class Main {
 		}
 		System.out.println("fill from file: " + array71);
 
-		
+	
 		//7.2 с консоли
 		Array array72 = new Array(5);
 		array72.fillFromConsole();

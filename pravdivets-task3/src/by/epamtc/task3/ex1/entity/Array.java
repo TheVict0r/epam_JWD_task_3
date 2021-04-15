@@ -2,7 +2,11 @@ package by.epamtc.task3.ex1.entity;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import by.epamtc.task3.ex1.scanner.DataScanner;
 
@@ -194,41 +198,39 @@ public class Array {
 
 	}
 
-	//предполагается, что файл содержит числа, разделенные пробелом
-	public static Array fillFromFile(String fileName) throws IOException {
+
+	public static Array fillFromFile(String fileName) throws FileNotFoundException {
 		if(fileName == null) {
 			//throw new NoFileNameException("No file name")
 		}
-		
 		File file = new File(fileName);
+		
+		List<Integer> list = new ArrayList<>();
+		
+		Scanner scanner = new Scanner(file);
+		
+		int i = 0;
 
-		StringBuilder strTemp = new StringBuilder();
-		FileInputStream fileInputStream = new FileInputStream(file);
-		try {
-			int a;
-			while ((a = fileInputStream.read()) != -1) {
-				strTemp.append((char) a);
-			}
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-		} finally {
-			fileInputStream.close();
+		while (scanner.hasNext()) {
+			
+		
+		while (!scanner.hasNextInt()) {
+			scanner.next();
+		}
+
+		i = scanner.nextInt();
+		list.add(i);
 		}
 		
-		String strTemp2 = strTemp.toString();
-
-		String[] strArr = strTemp2.split(" ");
-
-		int[] intArr = new int[strArr.length];
-		for (int i = 0; i < intArr.length; i++) {
-			intArr[i] = Integer.parseInt(strArr[i]);
+		int[] innerArray = new int[list.size()];
+		for(int j = 0; j < innerArray.length; j++) {
+			innerArray[j] = list.get(j);
 		}
 		
-		Array array = new Array(intArr);
+		Array result = new Array(innerArray);
 		
-		return array;
-		
+		return result;
 	}
-
+	
 }		
 
