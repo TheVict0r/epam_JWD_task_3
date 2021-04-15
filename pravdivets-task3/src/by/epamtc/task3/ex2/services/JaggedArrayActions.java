@@ -13,7 +13,7 @@ public class JaggedArrayActions {
 		
 		return result;
 	}
-
+	
 	public static int[][] sortByMax(int[][] jagArr, boolean reverse) {
 		if (jagArr == null) {
 			// throw new NullArrayException("Jagged array variable equals to null")
