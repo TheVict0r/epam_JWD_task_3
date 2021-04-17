@@ -1,6 +1,6 @@
 package by.epamtc.task3.ex2.logic.basis;
 
-public class BySum implements SortingBasis{
+public class Sum implements SortingBasis{
 
 	@Override
 	public int sortBy(int[] array) {

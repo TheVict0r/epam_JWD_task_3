@@ -1,6 +1,6 @@
 package by.epamtc.task3.ex2.logic.basis;
 
-public class ByMax implements SortingBasis{
+public class Max implements SortingBasis{
 
 	@Override
 	public int sortBy(int[] array) {

@@ -1,9 +1,9 @@
 package by.epamtc.task3.ex2.main;
 
 import by.epamtc.task3.ex2.logic.action.ArrayAction;
-import by.epamtc.task3.ex2.logic.basis.ByMax;
-import by.epamtc.task3.ex2.logic.basis.ByMin;
-import by.epamtc.task3.ex2.logic.basis.BySum;
+import by.epamtc.task3.ex2.logic.basis.Max;
+import by.epamtc.task3.ex2.logic.basis.Min;
+import by.epamtc.task3.ex2.logic.basis.Sum;
 import by.epamtc.task3.ex2.presentation.Printer;
 
 public class Main {
@@ -20,24 +20,24 @@ public class Main {
 		Printer.print(testArr);
 
 		System.out.println("======Sorted by increasing MIN element ===================");
-		ArrayAction.sortBy(testArr, new ByMin(), false);
+		ArrayAction.sortBy(testArr, new Min(), false);
 		Printer.print(testArr);
 		System.out.println("======Sorted by decreasing MIN element ===================");
-		ArrayAction.sortBy(testArr, new ByMin(), true);
+		ArrayAction.sortBy(testArr, new Min(), true);
 		Printer.print(testArr);
 		
 		System.out.println("======Sorted by increasing MAX element ===================");
-		ArrayAction.sortBy(testArr, new ByMax(), false);
+		ArrayAction.sortBy(testArr, new Max(), false);
 		Printer.print(testArr);
 		System.out.println("======Sorted by decreasing MAX element ===================");
-		ArrayAction.sortBy(testArr, new ByMax(), true);
+		ArrayAction.sortBy(testArr, new Max(), true);
 		Printer.print(testArr);
 		
 		System.out.println("======Sorted by increasing SUM============================");
-		ArrayAction.sortBy(testArr, new BySum(), false);
+		ArrayAction.sortBy(testArr, new Sum(), false);
 		Printer.print(testArr);
 		System.out.println("======Sorted by decreasing SUM============================");
-		ArrayAction.sortBy(testArr, new BySum(), true);
+		ArrayAction.sortBy(testArr, new Sum(), true);
 		Printer.print(testArr);
 		
 	}
