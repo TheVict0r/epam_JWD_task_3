@@ -20,24 +20,24 @@ public class Main {
 		Printer.print(testArr);
 
 		System.out.println("======Sorted by increasing MIN element ===================");
-		ArrayAction.sortBy(testArr, new Min(), false);
+		ArrayAction.sortIncreaseBy(testArr, new Min());
 		Printer.print(testArr);
 		System.out.println("======Sorted by decreasing MIN element ===================");
-		ArrayAction.sortBy(testArr, new Min(), true);
+		ArrayAction.sortDecreaseBy(testArr, new Min());
 		Printer.print(testArr);
 		
 		System.out.println("======Sorted by increasing MAX element ===================");
-		ArrayAction.sortBy(testArr, new Max(), false);
+		ArrayAction.sortIncreaseBy(testArr, new Max());
 		Printer.print(testArr);
 		System.out.println("======Sorted by decreasing MAX element ===================");
-		ArrayAction.sortBy(testArr, new Max(), true);
+		ArrayAction.sortDecreaseBy(testArr, new Max());
 		Printer.print(testArr);
 		
 		System.out.println("======Sorted by increasing SUM============================");
-		ArrayAction.sortBy(testArr, new Sum(), false);
+		ArrayAction.sortIncreaseBy(testArr, new Sum());
 		Printer.print(testArr);
 		System.out.println("======Sorted by decreasing SUM============================");
-		ArrayAction.sortBy(testArr, new Sum(), true);
+		ArrayAction.sortDecreaseBy(testArr, new Sum());
 		Printer.print(testArr);
 		
 	}
