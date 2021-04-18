@@ -8,7 +8,7 @@ public class ArrayNumberActions {
 
 	public static int[] defineSimpleNum(Array arrayObject) {
 		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока
+			// throw new NullArrayObjectException("Variable is not initialized") - пока
 			// без реализации
 		}
 		int[] array = arrayObject.getArray();
@@ -46,7 +46,7 @@ public class ArrayNumberActions {
 
 	public static int[] defineFibonacci(Array arrayObject) {
 		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
+			// throw new NullArrayObjectException("Variable is not initialized") - пока без реализации
 		}
 
 		int[] array = arrayObject.getArray();
@@ -75,7 +75,7 @@ public class ArrayNumberActions {
 	
 	public static int[] defineThreeDigtNoIdentical(Array arrayObject) {
 		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
+			// throw new NullArrayObjectException("Variable is not initialized") - пока без реализации
 		}
 		int[] array = arrayObject.getArray();
 		int[] tmp = new int[array.length];

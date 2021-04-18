@@ -216,6 +216,8 @@ public class Array {
 			while (!scanner.hasNextInt()) {
 				scanner.next();
 			}
+			
+			
 			i = scanner.nextInt();
 			list.add(i);
 		}
@@ -236,7 +238,7 @@ public class Array {
 	 */
 	public static void fillWithRandom(Array arrayObject) {
 		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
+			// throw new NullArrayObjectException("Variable is not initialized") - пока без реализации
 		}
 		
 		int[] array = arrayObject.getArray();
@@ -251,7 +253,7 @@ public class Array {
 	//перегрузил предыдущий метод с возможностью ограничения диапазона случайных чисел
 	public static void fillWithRandom(Array arrayObject, int bound) {
 		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
+			// throw new NullArrayObjectException("Variable is not initialized") - пока без реализации
 		}
 		
 		int[] array = arrayObject.getArray();
