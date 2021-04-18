@@ -4,6 +4,10 @@ public class Min implements SortingBasis{
 
 	@Override
 	public int sortBy(int[] array) {
+		if(array == null) {
+			//throw new NullArrayException("Variable is not initialized");
+			//пока не реализовано
+		}
 		int min = array[0];
 		for(int i = 1; i < array.length; i++) {
 			if(array[i] < min) {

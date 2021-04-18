@@ -4,7 +4,7 @@ public class Printer {
 
 		public static void print(int[] arr) {
 		if (arr == null) {
-			// throw new NullArrayException("Array variable equals to null")
+			// throw new NullArrayException("Variable is not initialized")
 			// пока что не реализовано
 		}
 		for(int i = 0; i < arr.length; i++) {
@@ -15,7 +15,7 @@ public class Printer {
 	
 	public static void print(int[][] jagArr) {
 		if (jagArr == null) {
-			// throw new NullArrayException("Jagged array variable equals to null")
+			// throw new NullArrayException("Variable is not initialized"")
 			// пока что не реализовано
 		}
 		for(int i = 0; i < jagArr.length; i++) {
