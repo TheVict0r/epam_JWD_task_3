@@ -1,7 +1,5 @@
 package by.epamtc.task3.ex1.service;
 
-import java.util.Random;
-
 import by.epamtc.task3.ex1.entity.Array;
 
 public class ArrayNumberActions {
