@@ -1,9 +1,7 @@
 package by.epamtc.task3.ex1.entity;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -15,16 +13,13 @@ public class Array {
 	private int[] array;
 
 	public Array(int[] array) {
-		if (array == null) {
-			// throws NullArrayException("The array equals to null") - пока без реализации
-		}
+		//раньше здесь была проверка на null, но Вы сказали, 
+		//что в сущностях проверку не делают, поэтому убрал
 		this.array = array;
 	}
 
 	public Array(int length) {
 		if (length < 0) {
-			// throw new IllegalArrayLengthException("The array length can't be less than 0")
-			// пока без реализации
 		}
 		array = new int[length];
 	}
