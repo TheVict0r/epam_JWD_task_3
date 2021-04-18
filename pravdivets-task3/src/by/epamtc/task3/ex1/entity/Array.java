@@ -204,7 +204,7 @@ public class Array {
 	 */
 	public static Array fillFromFile(String fileName) throws FileNotFoundException {
 		if (fileName == null) {
-			// throw new NoFileNameException("No file name")
+			// throw new NullFileNameException("Variable is not initialized")
 		}
 		File file = new File(fileName);
 		List<Integer> list = new ArrayList<>();
