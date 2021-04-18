@@ -55,8 +55,8 @@ public class Main {
 		//7.3 случайные числа
 		Array array731 = new Array(10);
 		Array array732 = new Array(10);
-		ArrayNumberActions.fillWithRandom(array731);
-		ArrayNumberActions.fillWithRandom(array732, 100);
+		Array.fillWithRandom(array731);
+		Array.fillWithRandom(array732, 100);
 		System.out.println("fill random without bound: " + array731);
 		System.out.println("fill random with    bound: " + array732);
 

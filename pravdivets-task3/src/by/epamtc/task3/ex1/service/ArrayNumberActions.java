@@ -111,34 +111,6 @@ public class ArrayNumberActions {
 	}
 
 	
-	public static void fillWithRandom(Array arrayObject) {
-		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
-		}
-		
-		int[] array = arrayObject.getArray();
-		Random random = new Random();
-
-		for (int i = 0; i < array.length; i++) {
-			array[i] = random.nextInt();
-		}
-		
-	}
-
-	//перегрузил предыдущий метод с возможностью ограничения диапазона случайных чисел
-	public static void fillWithRandom(Array arrayObject, int bound) {
-		if (arrayObject == null) {
-			// throw new NullArrayObjectException(The Array object equals to null) - пока без реализации
-		}
-		
-		int[] array = arrayObject.getArray();
-		Random random = new Random();
-		
-		for (int i = 0; i < array.length; i++) {
-			array[i] = random.nextInt(bound);
-		}
-		
-	}
 	
 	
 	public static int[] cutArray(int[] longArray, int shortArrayLength ) {
