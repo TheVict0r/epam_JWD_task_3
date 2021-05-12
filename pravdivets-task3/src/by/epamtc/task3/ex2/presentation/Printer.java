@@ -12,7 +12,8 @@ public class Printer {
 		}
 		System.out.println();
 	}
-	
+
+		
 	public static void print(int[][] jagArr) {
 		if (jagArr == null) {
 			// throw new NullArrayException("Variable is not initialized"")
@@ -25,6 +26,5 @@ public class Printer {
 			System.out.println();
 		}
 	}
-	
 	
 }
