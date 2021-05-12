@@ -15,5 +15,4 @@ public class Sum implements SortingBasis{
 		
 		return sum;
 	}
-
 }

@@ -16,5 +16,4 @@ public class Max implements SortingBasis{
 		}
 		return max;
 	}
-
 }

@@ -16,5 +16,4 @@ public class Min implements SortingBasis{
 		}
 		return min;
 	}
-
 }
